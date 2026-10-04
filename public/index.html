@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>条件选股 · 策略工作台</title><link rel="stylesheet" href="/styles.css"><script src="/vendor/lucide.min.js" defer></script></head>
+<body>
+  <header class="app-header"><a class="brand" href="#workspace"><span class="brand-mark"><i data-lucide="chart-no-axes-combined"></i></span><h1>条件选股</h1><span class="brand-subtitle">策略工作台</span></a><span class="connection"><span class="status-dot"></span>iFinD · A 股</span></header>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="nav-label">工作空间</div>
+      <nav aria-label="工作空间"><a class="nav-item active" href="#workspace"><i data-lucide="sliders-horizontal"></i>策略筛选</a><a class="nav-item" href="#resultsSection"><i data-lucide="list-filter"></i>筛选结果</a><a class="nav-item" href="#compareSection"><i data-lucide="columns-2"></i>股票比较</a><a class="nav-item" href="#strategyArchive"><i data-lucide="bookmark"></i>保存记录</a></nav>
+      <div class="data-scope"><div class="nav-label">数据范围</div><div id="poolMeta">读取股票池…</div><details class="disclosure"><summary>指标覆盖<i data-lucide="chevron-down"></i></summary><div id="registryMeta" class="registry-meta"></div></details></div>
+      <div class="sidebar-footer">仅作事实筛选与数据解释</div>
+    </aside>
+    <main class="shell" id="workspace">
+      <div class="page-heading"><div><p class="eyebrow">STOCK SCREENING</p><h2>策略筛选</h2></div><span class="workspace-label"><i data-lucide="settings-2"></i>当前策略</span></div>
+      <section class="query-panel" aria-labelledby="intentLabel">
+        <div class="section-title"><label id="intentLabel" for="intent">选股意图</label><span id="requestStatus" class="request-status" role="status" aria-live="polite"></span></div>
+        <div class="query-row"><textarea id="intent" spellcheck="false">找一些经营改善、估值不过高、走势比较稳定的股票。</textarea><button id="parseBtn" class="primary"><i data-lucide="sparkles"></i><span>解析意图</span></button></div>
+        <div class="query-footer"><details class="template-disclosure"><summary><i data-lucide="layout-template"></i>策略模板<i data-lucide="chevron-down"></i></summary><div id="templates" class="template-list"></div></details><p class="risk">不构成买卖建议或收益承诺</p></div>
+      </section>
+      <section class="grid">
+        <div class="panel candidate-panel"><div class="panel-head"><h2><span class="section-number">01</span>确认条件<span id="candidateCount" class="count">0</span></h2><button id="confirmBtn" class="small"><i data-lucide="check-check"></i>确认勾选</button></div><div id="ambiguities" class="note-list"></div><div id="candidates" class="candidate-list"></div><details class="disclosure intent-disclosure"><summary><i data-lucide="scan-text"></i>解析明细<i data-lucide="chevron-down"></i></summary><div id="aiFrame" class="ai-frame"></div></details></div>
+        <div class="panel condition-panel"><div class="panel-head"><h2><span class="section-number">02</span>执行条件<span id="conditionCount" class="count">0</span></h2><button id="runBtn" class="primary small"><i data-lucide="play"></i>执行筛选</button></div><div id="conditions" class="condition-list"></div><div id="validation" class="validation" role="status" aria-live="polite"></div></div>
+      </section>
+      <section class="panel results-section" id="resultsSection"><div class="panel-head"><h2><span class="section-number">03</span>筛选结果</h2><div class="actions"><button id="compareBtn" class="small"><i data-lucide="columns-2"></i>比较已选</button><button id="saveBtn" class="small"><i data-lucide="bookmark-plus"></i>保存策略</button></div></div><div id="summary" class="summary"></div><div id="emptyHint" class="empty-hint"></div><div class="tabs" role="tablist" aria-label="结果状态"><button class="tab active" role="tab" aria-selected="true" data-tab="selected">入选</button><button class="tab" role="tab" aria-selected="false" data-tab="excluded">排除</button><button class="tab" role="tab" aria-selected="false" data-tab="unknown">无法判断</button></div><div id="results" class="results"></div></section>
+      <section class="panel compare-section" id="compareSection"><div class="panel-head"><h2><i data-lucide="columns-2"></i>股票比较</h2></div><div id="compare" class="compare"><div class="empty-state">暂无比较记录</div></div></section>
+      <section class="panel save-section" id="strategyArchive"><div class="panel-head"><h2><i data-lucide="bookmark"></i>保存记录</h2></div><div id="saveStatus" role="status"></div><div id="saved" class="saved"><div class="empty-state">暂无保存记录</div></div></section>
+      <footer class="page-footer"><span>iFinD 数据服务</span><span>事实 · 来源 · 时点</span></footer>
+    </main>
+  </div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
